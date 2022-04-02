@@ -45,31 +45,41 @@ class StagiaireCrudController extends CrudController
         CRUD::column('prenom');
         CRUD::column('date_naissance');
         CRUD::column('filiere');
-        CRUD::column('etablissement');
-        CRUD::column('status');
         CRUD::addColumn([  // Select
-            'label'     => "id_session",
+            'label'     => "session",
             'type'      => 'select',
             'name'      => 'id_session', // the db column for the foreign key
-         
-            // optional
-            // 'entity' should point to the method that defines the relationship in your Model
-            // defining entity will make Backpack guess 'model' and 'attribute'
-            'entity'    => 'session',
-            
-            // optional - manually specify the related model and attribute
+              'entity'    => 'session',
             'model'     => "App\Models\Session", // related model
-            'attribute' => 'id', // foreign key attribute that is shown to user
+            'attribute' => 'libelle', // foreign key attribute that is shown to user
          
-            // optional - force the related options to be a custom query, instead of all();
-            // 'options'   => (function ($query) {
-            //      return $query->orderBy('name', 'ASC')->where('depth', 1)->get();
-            //  }),
-              //  you can use this to filter the results show in the select
+       
             ]);
             
-        // CRUD::column('id_session');
-        //CRUD::column('id_encadreur');
+      
+        CRUD::column('etablissement');
+        CRUD::column('status');
+          // CRUD::column('id_session');
+          // CRUD::addColumn([  // Select
+          //   'label'     => "Encadreur",
+          //   'type'      => 'select',
+          //   'name'      => 'id_encadreur', // the db column for the foreign key
+         
+          //   // optional
+          //   // 'entity' should point to the method that defines the relationship in your Model
+          //   // defining entity will make Backpack guess 'model' and 'attribute'
+          //   'entity'    => 'encadreur',
+            
+          //   // optional - manually specify the related model and attribute
+          //   'model'     => "App\Models\Encadreur", // related model
+          //   'attribute' => 'nom','prenom' // foreign key attribute that is shown to user
+         
+          //   // optional - force the related options to be a custom query, instead of all();
+          //   // 'options'   => (function ($query) {
+          //   //      return $query->orderBy('name', 'ASC')->where('depth', 1)->get();
+          //   //  }),
+          //     //  you can use this to filter the results show in the select
+          //   ]);
         CRUD::column('created_at');
         CRUD::column('updated_at');
 
@@ -97,73 +107,58 @@ class StagiaireCrudController extends CrudController
         CRUD::field('date_naissance');
         CRUD::field('filiere');
         CRUD::field('etablissement');
+        // CRUD::field('id_ss');
         CRUD::field('status');
+        
         // CRUD::field('id_session');
         CRUD::addField([  // Select
-            'label'     => "Session",
-            'type'      => 'select',
-            'name'      => 'id_session', // the db column for the foreign key
-         
-            // optional
-            // 'entity' should point to the method that defines the relationship in your Model
-            // defining entity will make Backpack guess 'model' and 'attribute'
-            'entity'    => 'session',
-            
-            // optional - manually specify the related model and attribute
-            'model'     => "App\Models\Session", // related model
-            'attribute' => 'libelle', // foreign key attribute that is shown to user
-          
-            // optional - force the related options to be a custom query, instead of all();
-            // 'options'   => (function ($query) {
-            //      return $query->orderBy('name', 'ASC')->where('depth', 1)->get();
-            //  }),
-              //  you can use this to filter the results show in the select
-            ]);
-
-            CRUD::addField([  // Select
-                'label'     => "Session",
+                'label'     => "session",
                 'type'      => 'select',
                 'name'      => 'id_session', // the db column for the foreign key
-             
-                // optional
-                // 'entity' should point to the method that defines the relationship in your Model
-                // defining entity will make Backpack guess 'model' and 'attribute'
-                'entity'    => 'session',
+
+        //         // optional
+        //         // 'entity' should point to the method that defines the relationship in your Model
+        //         // defining entity will make Backpack guess 'model' and 'attribute'
+               'entity'    => 'session',
                 
-                // optional - manually specify the related model and attribute
-                'model'     => "App\Models\Session", // related model
-                'attribute' => 'id', // foreign key attribute that is shown to user
-              
-                // optional - force the related options to be a custom query, instead of all();
-                // 'options'   => (function ($query) {
-                //      return $query->orderBy('name', 'ASC')->where('depth', 1)->get();
-                //  }),
-                  //  you can use this to filter the results show in the select
+        //         // optional - manually specify the related model and attribute
+                 'model'     => "App\Models\Session", // related model
+                 'attribute' => 'libelle', // foreign key attribute that is shown to user
+             
+        //         // optional - force the related options to be a custom query, instead of all();
+        //         // 'options'   => (function ($query) {
+        //         //      return $query->orderBy('name', 'ASC')->where('depth', 1)->get();
+        //         //  }),
+        //           //  you can use this to filter the results show in the select
                 ]);
-        // CRUD::field('id_encadreur');
-        CRUD::addField([  // Select
-            'label'     => "Encadreur",
-            'type'      => 'select',
-            'name'      => 'id_encadreur', // the db column for the foreign key
+// dd($_POST);
+             // CRUD::field('id_encadreur');
+        // CRUD::addField([  // Select
+        //     'label'     => "Encadreur",
+        //     'type'      => 'select',
+        //     'name'      => 'id_encadreur', // the db column for the foreign key
          
-            // optional
-            // 'entity' should point to the method that defines the relationship in your Model
-            // defining entity will make Backpack guess 'model' and 'attribute'
-            'entity'    => 'encadreur',
+        //     // optional
+        //     // 'entity' should point to the method that defines the relationship in your Model
+        //     // defining entity will make Backpack guess 'model' and 'attribute'
+        //     'entity'    => 'encadreur',
             
-            // optional - manually specify the related model and attribute
-            'model'     => "App\Models\Encadreur", // related model
-            'attribute' => 'nom','prenom' // foreign key attribute that is shown to user
+        //     // optional - manually specify the related model and attribute
+        //     'model'     => "App\Models\Encadreur", // related model
+        //     'attribute' => 'nom', // foreign key attribute that is shown to user
          
-            // optional - force the related options to be a custom query, instead of all();
-            // 'options'   => (function ($query) {
-            //      return $query->orderBy('name', 'ASC')->where('depth', 1)->get();
-            //  }),
-              //  you can use this to filter the results show in the select
-            ]);
+        //     // optional - force the related options to be a custom query, instead of all();
+        //     // 'options'   => (function ($query) {
+        //     //      return $query->orderBy('name', 'ASC')->where('depth', 1)->get();
+        //     //  }),
+        //       //  you can use this to filter the results show in the select
+        //     ]);
 
         CRUD::field('created_at');
         CRUD::field('updated_at');
+
+        // dd(CRUD::field('id_session'));
+        
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
