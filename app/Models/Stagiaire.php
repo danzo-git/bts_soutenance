@@ -13,12 +13,12 @@ class Stagiaire extends Model
     protected $fillable=['matricule','id_session','libelle','nom','prenom','date_naissance','filiere','etablissement','status','id_encadreur'];
                 public function encadreur(){
                 
-                    return $this->hasone(Encadreur::class, 'id','id_encadreur');
+                    return $this->belongsTo(Encadreur::class, 'id_encadreur','id');
                 
                 }
                 public function session(){
                     
-                    return $this->hasone(Session::class, 'id','id_session');
+                    return $this->belongsTo(Session::class, 'id_session','id');
                     
                 }
 }
