@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\EncadreurRequest;
+use App\Http\Requests\StagiaireInformatiqueRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class EncadreurCrudController
+ * Class StagiaireInformatiqueCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class EncadreurCrudController extends CrudController
+class StagiaireInformatiqueCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +26,9 @@ class EncadreurCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Encadreur::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/encadreur');
-        CRUD::setEntityNameStrings('encadreur', 'encadreurs');
+        CRUD::setModel(\App\Models\StagiaireInformatique::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/stagiaire-informatique');
+        CRUD::setEntityNameStrings('stagiaire informatique', 'stagiaire informatiques');
     }
 
     /**
@@ -39,16 +39,7 @@ class EncadreurCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('id');
-        CRUD::column('nom');
-        CRUD::column('prenom');
-        CRUD::column('domaine');
-        CRUD::column('contacts');
-        CRUD::column('theme');
-        CRUD::column('service');
-        CRUD::column('created_at');
-        CRUD::column('updated_at');
-        $this->crud->addClause('where', 'type_encadreur', '=', $_GET['id']??0);
+        
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -65,19 +56,10 @@ class EncadreurCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(EncadreurRequest::class);
-        // CRUD::field('id');
-        CRUD::field('nom');
-        CRUD::field('prenom');
-        CRUD::field('domaine');
-        CRUD::field('contacts');
-        CRUD::field('theme');
-        CRUD::field('service');
-        CRUD::field('type_encadreur');
+        CRUD::setValidation(StagiaireInformatiqueRequest::class);
+
         
-        CRUD::field('created_at');
-        CRUD::field('updated_at');
-        
+
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');

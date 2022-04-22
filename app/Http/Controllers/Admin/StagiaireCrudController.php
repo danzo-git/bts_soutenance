@@ -39,6 +39,13 @@ class StagiaireCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+
+        $this->crud->addColumn([
+            'type'  => 'text',
+            'name'  => 'filiere',
+            'label' => 'filiere'
+          ],
+         );
         CRUD::column('id');
         CRUD::column('matricule');
         CRUD::column('nom');
@@ -79,6 +86,7 @@ class StagiaireCrudController extends CrudController
 
         CRUD::column('etablissement');
         CRUD::column('status');
+        $this->crud->addClause('where', 'type_stagiaire', '=', $_GET['id']??0);
         // CRUD::column('id_session');
             // CRUD::column('created_at');
        // CRUD::column('updated_at');
@@ -153,6 +161,7 @@ class StagiaireCrudController extends CrudController
             //  }),
               //  you can use this to filter the results show in the select
             ]);
+            CRUD::field('type_stagiaire');
 
         // CRUD::field('created_at');
         // CRUD::field('updated_at');

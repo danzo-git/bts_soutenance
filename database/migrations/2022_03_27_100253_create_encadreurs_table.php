@@ -17,11 +17,13 @@ class CreateEncadreursTable extends Migration
             $table->id();
             // $table->Integer('nom');
             $table->String('nom');
+
             $table->String('prenom');
             $table->String('domaine');
             $table->String('contacts');
             $table->String('theme');
             $table->String('service');
+            $table->String('type_encadreur');
             $table->timestamps();
         });
     }

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\StagiaireController;
 // --------------------------
 // Custom Backpack Routes
 // --------------------------
@@ -18,5 +18,13 @@ Route::group([
 ], function () { // custom admin routes
     Route::crud('stagiaire', 'StagiaireCrudController');
     Route::crud('encadreur', 'EncadreurCrudController');
-    Route::crud('session', 'SessionCrudController');
-}); // this should be the absolute last line of this file
+    Route::crud('session','SessionCrudController');
+    // Route::crud('developpeur','StagiaireController');
+    // Route::crud('developpeur', 'SessionCrudController');
+    Route::get('developpeur',function(){
+        $stage=StagiaireController::all();
+        dd($stage);
+    });
+}
+
+); // this should be the absolute last line of this file

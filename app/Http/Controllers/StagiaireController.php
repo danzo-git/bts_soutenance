@@ -46,7 +46,9 @@ class StagiaireController extends Controller
      */
     public function show(Stagiaire $stagiaire)
     {
-        //
+        $stagiaire=Stagiaire::all();
+        dd($stagiaire);
+        return view('backpack.base.inc.developpeur')->with($stagiaire);
     }
 
     /**

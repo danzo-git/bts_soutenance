@@ -23,6 +23,7 @@ class CreateStagiairesTable extends Migration
             $table->String('etablissement');
             $table->String('status');
             $table->Integer('id_session');
+            $table->String('type_stagiaire');
             $table->Integer('id_encadreur');
             // $table->foreign('id_encadreur')
             //                 ->references('id')
